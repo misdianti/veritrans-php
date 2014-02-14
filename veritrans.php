@@ -32,8 +32,6 @@ class Veritrans
   private $email;
   private $phone;
   
-  private $promo_id;
-  
   private $shipping_flag;
   private $required_shipping_address;
   private $shipping_specification_flag;
@@ -45,32 +43,26 @@ class Veritrans
   private $shipping_country_code;
   private $shipping_postal_code;
   private $shipping_phone;
-  private $shipping_method;
- 
-  private $card_no;
-  private $card_exp_date; // mm/yy/format
-  private $card_holder_name;
-  private $card_number_of_installment;
-  
-  private $lang_enable_flag;
-  private $lang;
   
   private $finish_payment_return_url;
   private $unfinish_payment_return_url;
   private $error_payment_return_url;
-  private $installment_option;
   
+  private $installment_option;
   private $point_banks;
   private $installment_banks; 
   private $installment_terms;   
   private $promo_bins;
   private $enable_3d_secure;
 
-  // Sample of array of commodity
-  // array(
-  //           array("COMMODITY_ID" => "123", "COMMODITY_UNIT" => "1", "COMMODITY_NUM" => "1", "COMMODITY_NAME1" => "BUKU", "COMMODITY_NAME2" => "BOOK"),
-  //           array("COMMODITY_ID" => "1243", "COMMODITY_UNIT" => "9", "COMMODITY_NUM" => "1", "COMMODITY_NAME1" => "BUKU Sembilan", "COMMODITY_NAME2" => "BOOK NINE")
-  //       )
+  /*
+    Sample of array of commodity items
+    array (
+      array("COMMODITY_ID" => 'sku1', "COMMODITY_UNIT" => 10000, "COMMODITY_NUM" => 2, "COMMODITY_NAME1" => 'Kaos', "COMMODITY_NAME2" => 'T-Shirt'),
+      array("COMMODITY_ID" => 'sku2', "COMMODITY_UNIT" => 20000, "COMMODITY_NUM" => 1, "COMMODITY_NAME1" => 'Celana', "COMMODITY_NAME2" => 'Pants')
+      )
+  */
+  
   private $commodity;
 
   public function __get($property) 
@@ -127,12 +119,8 @@ class Veritrans
       'MERCHANT_ID'                 => $this->merchant_id,
       'ORDER_ID'                    => $this->order_id,
       'SESSION_ID'                  => $this->session_id,
-      'GROSS_AMOUNT'                => $this->gross_amount,                   
-      'PREVIOUS_CUSTOMER_FLAG'      => $this->previous_customer_flag,         
-      'CUSTOMER_STATUS'             => $this->customer_status,                
+      'GROSS_AMOUNT'                => $this->gross_amount,              
       'MERCHANTHASH'                => $hash,
-      
-	    'PROMO_ID' 				          	=> $this->promo_id,
       'CUSTOMER_SPECIFICATION_FLAG' => $this->billing_address_different_with_shipping_address,   
       'EMAIL'                       => $this->email, 
       'FIRST_NAME'                  => $this->first_name,
@@ -152,15 +140,10 @@ class Veritrans
       'SHIPPING_COUNTRY_CODE'       => $this->shipping_country_code,
       'SHIPPING_POSTAL_CODE'        => $this->shipping_postal_code,
       'SHIPPING_PHONE'              => $this->shipping_phone,
-      'SHIPPING_METHOD'             => $this->shipping_method,
-      'CARD_NO'                     => $this->card_no,
-      'CARD_EXP_DATE'               => $this->card_exp_date,
       'FINISH_PAYMENT_RETURN_URL'   => $this->finish_payment_return_url,
       'UNFINISH_PAYMENT_RETURN_URL' => $this->unfinish_payment_return_url,
       'ERROR_PAYMENT_RETURN_URL'    => $this->error_payment_return_url,
-      'LANG_ENABLE_FLAG'            => $this->lang_enable_flag,
-      'LANG'                        => $this->lang,
-      'enable_3d_secure'            => $this->enable_3d_secure           
+      'ENABLE_3D_SECURE'            => $this->enable_3d_secure           
       );
 
     // data query string only without commodity

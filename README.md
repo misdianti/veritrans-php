@@ -110,5 +110,9 @@ if($order->token_merchant != $veritrans_notification->TOKEN_MERCHANT){
   echo "ERR";
   $this->db->insert('payment_notifications', array("params" => 'no match'));
   exit();
+} else {
+  echo "SUCCESS";
+  $this->db->insert('payment_notifications', array("params" => 'successful payment'));
+  exit();
 }
 ```
