@@ -180,6 +180,8 @@ class Veritrans
         $query_string = "$query_string&point_banks[]=$bank";
       }
     }
+    
+    $query_string = html_entity_decode($query_string);
     		
     $client = new Pest(self::REQUEST_KEY_URL);
     $result = $client->post('', $query_string);
